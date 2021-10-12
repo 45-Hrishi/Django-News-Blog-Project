@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6" style="padding-top: 10px;padding-bottom:10px;text-align:center;border-radius: 35px;">
+            <div class="card" style="width:auto;background-color: cadetblue;border-radius: 7px;">
+                <div class="card-header" style="text-align: center;">Profile</div>
+                {% if page_user.profile_pic %}
+                <img src="{{ page_user.profile_pic.url }}" style="display:block;margin-left: auto;
+                margin-right: auto;
+                width: 50%;padding:7px;" class="card-img-top rounded-circle" alt="...">
+                {% else %}
+                <img src="{% static 'theblog/images/profile.png' %}" style="display:block;margin-left: auto;
+                margin-right: auto;
+                width: 50%;padding:7px;" class="card-img-top rounded-circle" alt="...">
+                {% endif %}
+                <div class="card-body" style="width:auto;border-radius: 7px;">
+                    <h5 class="card-title">@{{ page_user.user.username }}</h5>
+                    <p class="card-text"><strong>{{ page_user.user.first_name }} {{ page_user.user.last_name }}</strong>
+                    </p>
+                    <p class="card-text">{{ page_user.bio|linebreaks}}</p>
+                    <p class="card-text"> Joined Date : {{page_user.user.date_joined|date:"d M Y"}}</p>
+                    {% if user.is_authenticated %}
+                    <a href="{% url  'userposts' %}" class="btn btn-outline-warning">Posts</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6" style="padding-top: 10px;">
+            <div class="card border-info mb-3" style="width:auto;background-color: cadetblue;border-radius: 7px;">
+                <div class="card-header" style="text-align: center;">Contact</div>
+                <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="green" class="bi bi-telephone-outbound" viewBox="0 0 16 16">
+                                    <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511zM11 .5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-4.146 4.147a.5.5 0 0 1-.708-.708L14.293 1H11.5a.5.5 0 0 1-.5-.5z"/>
+                                  </svg>&ThickSpace; Mobile &ThickSpace;</h6>
+                            </div>
+                            <div class="col-6 text-secondary">
+                                {{page_user.Mobile}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-6">
+                                <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="red" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                                    <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+                                  </svg>&ThickSpace; Email &ThickSpace;</h6>
+                            </div>
+                            <div class="col-6 text-secondary">
+                                {{page_user.user.email}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-6">
+                                <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-instagram mr-2 icon-inline text-danger">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>&ThickSpace; Instagram &ThickSpace;</h6>
+                            </div>
+                            <div class="col-6 text-secondary">
+                                <a class="text-secondary" href="{{page_user.insta_url}}">{{page_user.insta_url}}</a>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-6">
+                                <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-twitter mr-2 icon-inline text-info">
+                                    <path
+                                        d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+                                    </path>
+                                </svg>&ThickSpace;Twitter &ThickSpace;</h6>
+                            </h6>
+                            </div>
+                            <div class="col-6 text-secondary">
+                                <a class="text-secondary" href="{{page_user.twitter_url}}">{{page_user.twitter_url}}</a>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-6">
+                                <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-facebook mr-2 icon-inline text-primary">
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                                </svg>&ThickSpace; Facebook &ThickSpace;</h6>
+                            </div>
+                            <div class="col-6 text-secondary">
+                                <a class="text-secondary" href="{{page_user.fb_url}}">{{page_user.fb_url}}</a>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-6">
+                                <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-globe mr-2 icon-inline">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                                    <path
+                                        d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                    </path>
+                                </svg>&ThickSpace; Website &ThickSpace;</h6>
+                            </div>
+                            <div class="col-6 text-secondary">
+                                <a class="text-secondary"href="{{page_user.wb_url}}">{{page_user.wb_url}}</a>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

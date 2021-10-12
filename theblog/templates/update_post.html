@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Edit Blog post {% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+{% if user.id == post.author.id %}
+<h2 style="font-family:serif;font-size: largeer;text-align: center;">Edit Post</h2>
+<div class="form-group">
+    <form method="POST">
+        {% csrf_token%}
+        {{form.as_p}}
+        {{form.media}}
+        <button class="btn btn-primary">Update</button>
+    </form>
+</div>
+{% else %}
+<h3>
+    SORRY!!
+    You are not allowed to update other's post 
+</h3>
+{% endif %}
+{% else %}
+<h5>You are not login!!Please Login first.</h5>
+{% endif %}
+{% endblock %}

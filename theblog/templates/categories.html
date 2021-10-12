@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Category : {% endblock %}
+{% block content %}
+{% if category_posts %}
+<h1 style="font-family:serif;font-size:x-large;text-align: left;color: orangered;">Category : <small
+        style="color: teal;">{{cats|upper}}</small></h1>
+<ul>
+    {% for post in category_posts %}
+    <li>
+        <a href="{% url 'article-detail' pk=post.pk%}"
+            style="font-family:Georgia, 'Times New Roman', Times, serif;font-size:x-large;text-decoration:none;text-align:center;color: black;">
+        {{post.title|upper}}</a>
+        <p>Published On : <small style="color: red;">{{post.posting_date}}</small></p>
+        <p style="font-family: cursive;font-size: medium;color:gray;text-align:justify">{{post.body|slice:500|safe}} <a
+                style="text-decoration: none;" href="{% url 'article-detail' pk=post.pk %}">Continue Reading...</a></p>
+        <h6 style="text-align:left;"><strong><a href="#"
+                    style="text-decoration: none;font-family:Georgia;font-size: small;"><small
+                        style="font-family: Georgia;color:black;font-size: small;">by</small> @{{post.author}}
+                    {{post.author.last_name|lower}}</a></strong></h6>
+
+    </li>
+    <hr style="margin-bottom: 0px;">
+    {% endfor %}
+</ul>
+{% else %}
+<h2 style="font-family:cursive;text-decoration:wavy;color: tomato;">Sorry! But {{cats}} is not exist,please try with another category </h2>
+{% endif %}
+{% endblock %}

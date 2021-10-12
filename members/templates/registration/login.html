@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Login {% endblock %}
+{% block content %}
+<h2 style="font-family:serif;font-size: largeer;text-align: center;text-decoration: transparent;">Please Login</h2>
+<div class="form-group">
+<form  method="POST">
+{% csrf_token%}
+{{form.as_p}}
+<button type="submit" class="btn btn-warning">Login</button>
+</form>
+</div>
+
+
+{% endblock %}

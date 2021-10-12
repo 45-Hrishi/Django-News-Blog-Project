@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% if user.is_authenticated %}
+{% block title %} Add Category {% endblock %}
+{% block content %}
+<h2 style="font-family:serif;font-size: largeer;text-align: center;">Post Category</h2>
+<div class="form-group">
+    
+        <form method="POST" class="justify-content-center">
+            {% csrf_token%}
+            {{form.as_table}}
+            <button type="submit" class="btn btn-primary">save</button>
+        </form>
+    
+</div>
+<br>
+<br>
+{% endblock %}
+{% endif %}

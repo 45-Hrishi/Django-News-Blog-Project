@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% if user.is_authenticated %}
+{% block title %}Add post {% endblock %}
+{% block content %}
+<h2 style="font-family:serif;font-size: largeer;text-align: center;">Add Post</h2>
+<div class="container-fluid" style="max-block-size:100% ;">
+    <div class="form-group">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token%}
+           
+            {{form.as_p}}
+            <div style="max-width: min-content;"> {{form.media}}</div>
+            
+            
+            <button type="submit" class="btn btn-success">Post</button>
+        </form>
+    </div>
+</div>
+<script>
+    var name = "{{ user.id }}";
+    document.getElementById("elder").value = name
+</script>
+<br>
+<br>
+{% endblock %}
+{% endif %}

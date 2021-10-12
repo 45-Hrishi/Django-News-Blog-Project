@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Likes{% endblock %}
+{% block content %}
+<div>
+  <h5 style="color:rgb(240, 173, 78);font-family: cursive;">Liked By:</h5>
+  {% for user in post_likes %}
+  <div class="card w-100 " style="border-radius:35px;">
+    <div class="card-body">
+      <h5 class="card-title">{{user.username}}</h5>
+      <p class="card-text">{{user.first_name|title}} {{user.last_name|title}}</p>
+    </div>  
+  </div>
+  <br>
+  {% endfor %}
+</div>
+{% endblock %}
