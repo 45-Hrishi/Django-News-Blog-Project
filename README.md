@@ -1,7 +1,8 @@
 
-# title : The Django Blog Project
+# Title : The Django Blog Project
 ## Description - Begineer Friendly Django Project.With Django as backend framework and Bootstrap as frontend css framework.
-## features - <ol>
+## features - 
+<ol>
                 <li>User Authentication and Authorization</li>
                 <li>Login/Logout fucntionality</li>
                 <li>User profile</li>
@@ -10,5 +11,7 @@
                 <li>Lieks and unlikes system to every post</li>
               </ol>
 Framework - Django,Bootstrap
+<br>
 Language - Python,Html,Css
-Created by : Hrishikesh Kothawade.
+<br>
+Created by : Hrishikesh Kothawade (HR).
